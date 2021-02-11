@@ -1,4 +1,7 @@
+fakePage/
+
 node_modules/
 sessions/
 
 secret.js
+!secret.js.template
