@@ -1,6 +1,7 @@
 fakePage/
 
 node_modules/
+nodejs/
 sessions/
 
 secret.js
