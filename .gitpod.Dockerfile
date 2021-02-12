@@ -13,5 +13,3 @@ RUN sudo apt-get update \
 
 # Install `pm2`
 RUN npm install pm2 -g
-# Install 'nodaemon'
-RUN npm install nodaemon -g
