@@ -6,6 +6,7 @@ tasks:
     #command: 'echo "TODO: Replace with command to start project"'
   - name: pm2
     init: pm2 start main.js --watch --ignore-watch="public/* sesesions/*" --no-daemon
+    command: pm2 start main.js --watch --ignore-watch="public/* sesesions/*" --no-daemon
   - name: mysql
     init: mysql -uroot
     command: SHOW COLUMNS FROM user; SHOW COLUMNS FROM article; SHOW COLUMNS FROM comment;
