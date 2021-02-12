@@ -1,7 +1,7 @@
 // You should change this value, before running on main app. (-> 30)
 const port = 3000;
 /* Personal Libraries */
-var secret = require('./nodejs/secret.js');
+var secret = require('./lib/secret.js');
 
 /* default module */
 const express = require('express');
@@ -10,9 +10,10 @@ const app = express();
 const helmet = require('helmet');
 var session = require('express-session');
 var FileStore = require('session-file-store')(session)
+var bodyParser = require('body-parser');
 
 /* default middleware */
-app.use(express.static('public'));
+app.use('/', express.static(__dirname + '/public'));
 /* npm middleware */
 app.use(helmet());
 app.use(session({
@@ -20,6 +21,9 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
     store: new FileStore()
+}));
+app.use(bodyParser.urlencoded({
+    extended: false
 }));
 
 /* personal router */
@@ -37,9 +41,7 @@ app.use((req, res, next)=>{
     res.status(404).send('Wrong Access!!(404)');
 });
 
-/* 
-*** Error Middleware ***
-*   Error가 발생했을 때, handling이 가능하다.*/
+/*** Error Middleware ***/
 app.use((err, req, res, next)=>{
     console.log(err.stack);
     res.status(500).send('Something broke!');

@@ -1,5 +1,5 @@
 var createDB = require('./lib/secret');
-var con = createDB.db.con;
+var con = createDB.createDB.con;
 
 con.connect(function (err) {
     if (err) throw err;

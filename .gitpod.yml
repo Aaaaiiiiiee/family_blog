@@ -5,7 +5,7 @@ tasks:
   #- init: 'echo "TODO: Replace with init/build command"'
     #command: 'echo "TODO: Replace with command to start project"'
   - name: pm2
-    init: pm2 start main.js --watch --ignore-watch="public/* sesesions/*" --no-daemon
+    init: pm2 start main.js --watch --ignore-watch="public/* sessions/*" --no-daemon
   - name: mysql
 
 github:
