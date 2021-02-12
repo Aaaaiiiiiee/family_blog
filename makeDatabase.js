@@ -55,7 +55,7 @@ con.connect(function (err) {
     con.query(`CREATE TABLE login_log(
         id              VARCHAR(20) NOT NULL,
         login_time      DATETIME    NOT NULL,
-        PRIMARY KEY(article_num)
+        PRIMARY KEY(id)
     );`, (err, res) => {
         if (err) throw err;
         console.log('TABLE login_log CREATED');
