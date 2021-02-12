@@ -2,4 +2,5 @@
 * [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/<your-org>/<your-project>)
 
 # TODO
-- [] save sql query so that you can easily make database in another computer.
+- [ ] save sql query so that you can easily make database in another computer.
+- [x] what to do
