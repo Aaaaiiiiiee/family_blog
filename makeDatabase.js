@@ -51,5 +51,15 @@ con.connect(function (err) {
         console.log('TABLE comment CREATED');
     });
 
+    /* CREATE TABLE login_log */
+    con.query(`CREATE TABLE login_log(
+        id              VARCHAR(20) NOT NULL,
+        login_time      DATETIME    NOT NULL,
+        PRIMARY KEY(article_num)
+    );`, (err, res) => {
+        if (err) throw err;
+        console.log('TABLE login_log CREATED');
+    });
+
     con.end();
 });
