@@ -2,5 +2,5 @@
 * [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/Aaaaiiiiiee/familly_blog_practice)
 
 # TODO
-- [ ] save sql query so that you can easily make database in another computer.
-- [x] what to do
+- [x] Save sql query so that you can easily make database in another computer.
+- [ ] what to do
