@@ -1,11 +1,15 @@
+a{
+    text-decoration: none;
+}
 #header{
     background-color: black;
     color: white;
-    border-radius:10px; /* round corners */
+    border-radius: 10px; /* round corners */
+    margin-bottom: 10px;
 }
 #header-grid{
     display: grid;
-    grid-template-columns: 300px 1fr;
+    grid-template-columns: 400px 1fr;
     height: 150px;
 }
 #header-information{
@@ -16,7 +20,11 @@
     bottom: 0;
     left: 10px;
 }
+#header-information > span > a{
+    color: white;
+}
 h1{
+    font-size: 3em;
     display: inline;
 }
 nav{
@@ -32,6 +40,5 @@ nav{
     display: inline;
 }
 #navigation > li > a{
-    text-decoration: none;
     color: white;
 }

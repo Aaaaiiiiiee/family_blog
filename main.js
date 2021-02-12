@@ -20,21 +20,29 @@ app.use(session({
     secret: secret.session.secret,
     resave: false,
     saveUninitialized: true,
-    store: new FileStore()
+    store: new FileStore(),
 }));
 app.use(bodyParser.urlencoded({
     extended: false
 }));
 
 /* personal router */
-var mainRouter = require('./router/main');
-var loginRouter = require('./router/login');
-var indexRouter = require('./router/index');
+var mainRouter      = require('./router/main');
+var loginRouter     = require('./router/login');
+var indexRouter     = require('./router/index');
+var timelineRouter  = require('./router/timeline');
+var articleRouter   = require('./router/article');
+var aboutRouter     = require('./router/about');
+var uploadRouter    = require('./router/upload');
 
 /* Add Router */
 app.use('/login', loginRouter);
 app.use('/index', indexRouter);
 app.use('/', mainRouter);
+app.use('/timeline', timelineRouter);
+app.use('/article', articleRouter);
+app.use('/about', aboutRouter);
+app.use('/upload', uploadRouter);
 
 /* Page not Found (404) */
 app.use((req, res, next)=>{
