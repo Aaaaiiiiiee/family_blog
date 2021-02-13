@@ -3,7 +3,7 @@
 
 # TODO
 - [x] Save sql query so that you can easily make database in another computer.
-- [ ] Make Multiple Upload function
+- [x] Make Multiple Upload function
     * https://github.com/expressjs/multer/blob/master/README.md
     * https://stackoverflow.com/questions/39350040/uploading-multiple-files-with-multer
     * Search `how can i use multer by multiple upload`

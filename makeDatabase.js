@@ -28,15 +28,27 @@ con.connect(function (err) {
 
     /* CREATE TABLE article */
     con.query(`CREATE TABLE article(
-        number              INT(11)     NOT NULL,
-        title               VARCHAR(20) NOT NULL,
-        description         TEXT,
-        created_date        DATETIME    NOT NULL,
-        last_update_date    DATETIME    NOT NULL,
+        number                      INT(11)     NOT NULL    AUTO_INCREMENT,
+        title                       VARCHAR(100) NOT NULL,
+        description                 TEXT,
+        album_photo_start_id        INT(11),
+        number_of_picture           INT(11),
+        created_date                DATETIME    NOT NULL,
+        last_update_date            DATETIME    NOT NULL,
         PRIMARY KEY(number)
     );`, (err, res) => {
         if (err) throw err;
         console.log('TABLE article CREATED');
+    });
+
+    /* CREATE TABLE album_photo*/
+    con.query(`CREATE TABLE album_photo(
+        id          INT(11)     NOT NULL    AUTO_INCREMENT,
+        filename    VARCHAR(113) NOT NULL,
+        PRIMARY KEY(id)
+    );`, (err, res)=>{
+        if(err) throw err;
+        console.log('TABLE album_photo CREATED');
     });
 
     /* CREATE TABLE comment */

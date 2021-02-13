@@ -2,6 +2,8 @@
 var path = require('path');
 /* Personal Libraries */
 var template = require('../lib/template.js');
+var connectDB = require('../lib/secret.js');
+var connection = connectDB.connectDB.connection;
 /* npm module */
 var express = require('express');
 var router = express.Router();
@@ -14,12 +16,16 @@ var storage = multer.diskStorage({  // multer disk storage settings
         callback(null, Date.now() + "-" + file.originalname)
     }
 });
-var upload = multer({ // multer settings
+var upload = multer({ // `upload` multer settings
     storage: storage,
-    fileFilter: function(req,file, callback){
+    fileFilter: function (req, file, callback) {
         var ext = path.extname(file.originalname);
-        if(ext !== '.png' && ext !== '.jpg' && ext !== '.gif' && ext !== '.jpeg'){
+        if (ext !== '.png' && ext !== '.jpg' && ext !== '.gif' && ext !== '.jpeg') {
             return callback(new Error('only images are allowed'))
+        } else if (file.originalname.length > 50) {
+            return callback(new Error("filename can't be more than 50"));
+        } else if (req.body.title > 100) {
+            return callback(new Error("title can't be more than 100"));
         }
         callback(null, true)
     },
@@ -37,7 +43,8 @@ router.get('/', (req, res) => {
         `, `
             <form action="/upload/article" enctype="multipart/form-data" method="post">
                 <input type="file" class="form_control_file" name="album_photos" multiple>
-                <textarea name="article_body"></textarea>
+                <input type="text" name="title" placeholder="title" class="type" id="title">
+                <textarea name="article_body" placeholder="description" class="type"></textarea>
                 <input type="submit" value="Upload" class="submit-btn btn">
             </form>
         `);
@@ -45,24 +52,26 @@ router.get('/', (req, res) => {
     }
 });
 
-// router.post('/stats', upload.single('uploaded_file'), function (req, res) {
-//     // req.file is the name of your file in the form above, here 'uploaded_file'
-//     // req.body will hold the text fields, if there were any 
-//     console.log(req.file);
-//     console.log("and");
-//     console.log(req.body);
-// });
+router.post('/article', upload, (req, res, next) => {
+    for (var i = 0; i < req.files.length; i++) {
+        var filename = req.files[i].filename;
+        connection.query(`INSERT INTO album_photo(filename) VALUES(?);`, [filename], (err, data) => {
+            if (err) throw err;
+        });
+        console.log("FILE IS ADDED IN TABLE album_photo");
+    }
 
-// router.post('/multiple-upload', upload.array('uploaded_files', 10), (req, res, next) => {
-//     console.log(req.files);
-//     res.send('your file is uploaded');
-// });
-
-router.post('/article', upload, (req,res,next)=>{
-    console.log(req.files);
-    console.log('and');
-    console.log(req.body);
-    res.redirect('/article/'+'1');
+    connection.query(`SELECT COUNT(*) AS number FROM album_photo;`, (err, album_photo) => {
+        var album_photo_start_id = album_photo[0].number - req.files.length + 1;
+        connection.query(`
+            INSERT INTO article(title, description, album_photo_start_id, number_of_picture, created_date, last_update_date)
+            VALUES (?, ?, ?, ?, NOW(), NOW());
+        `, [req.body.title, req.body.article_body, album_photo_start_id, req.files.length], (err, data) => {
+            if (err) throw err;
+            console.log('TABLE article IS NOW ADDED');
+            res.redirect('/article/' + data.insertId);
+        });
+    });
 });
 
 module.exports = router;

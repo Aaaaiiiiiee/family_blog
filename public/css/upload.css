@@ -1,15 +1,7 @@
 .form_control_file{
-    width: 100%;
     border: 1px solid black;
     border-radius: 10px;
-    margin-bottom: 5px;
-}
-
-textarea{
-    width: 100%;
-    margin-bottom: 5px;
-    font-size: 25px;
-    font-family: 'Times New Roman', serif
+    /* margin-bottom: 5px; */
 }
 
 .btn{
@@ -22,4 +14,21 @@ textarea{
 
 form{
     margin-bottom: 40px;
+}
+
+form > input, textarea{
+    margin-bottom: 10px;
+}
+
+.type{
+    font-size: 25px;
+    font-family: 'Times New Roman', serif
+}
+.type, .form_control_file{
+    width: 100%;
+}
+
+#title{
+    margin-bottom: 0;
+    font-weight: bold;
 }
