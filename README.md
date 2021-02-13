@@ -8,6 +8,8 @@
     * https://stackoverflow.com/questions/39350040/uploading-multiple-files-with-multer
     * Search `how can i use multer by multiple upload`
 - [ ] Write Wiki about how to init&run this project
+- [ ] Run on gcp
+- [ ] Make article Router ( This is about showing article )
 - [ ] what to do
 
 # Commit LOG
