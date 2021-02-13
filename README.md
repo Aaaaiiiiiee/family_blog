@@ -7,8 +7,9 @@
     * https://github.com/expressjs/multer/blob/master/README.md
     * https://stackoverflow.com/questions/39350040/uploading-multiple-files-with-multer
     * Search `how can i use multer by multiple upload`
-- [ ] Write Wiki about how to init&run this project
+- [x] Write Wiki about how to init&run this project
 - [ ] Run on gcp
+- [ ] why cannot connect in gcp_mysql in this shell
 - [ ] Make article Router ( This is about showing article )
 - [ ] what to do
 
@@ -22,3 +23,4 @@
 
 # Reference
 * [Content-security-policy에 관하여](https://developers.google.com/web/fundamentals/security/csp?hl=ko)
+https://www.digitalocean.com/community/tutorials/how-to-use-pm2-to-setup-a-node-js-production-environment-on-an-ubuntu-vps#give-safe-user-permission-to-use-port-80
