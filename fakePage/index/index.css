@@ -1,0 +1,38 @@
+#header{
+    background-color: black;
+    color: white;
+    border-radius:10px; /* round corners */
+}
+#header-grid{
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    height: 150px;
+}
+#header-information{
+    position: relative;
+}
+#header-information > span{
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+}
+h1{
+    font-size: 3em;
+    display: inline;
+}
+nav{
+    position: relative;
+}
+#navigation{
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+}
+#navigation > li{
+    list-style-type: none;
+    display: inline;
+}
+#navigation > li > a{
+    text-decoration: none;
+    color: white;
+}
