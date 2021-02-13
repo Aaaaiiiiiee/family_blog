@@ -5,9 +5,10 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/', (req, res)=>{
-    if(req.session.is_logined === false) res.redirect('/login');
-    else {
+    if(!req.session.is_logined) res.redirect('/login');
+    else{
         var html = template.header('', '');
+        html += 'this is board';
         res.send(html);
     }
 });

@@ -31,18 +31,20 @@ var mainRouter      = require('./router/main');
 var loginRouter     = require('./router/login');
 var indexRouter     = require('./router/index');
 var timelineRouter  = require('./router/timeline');
-var articleRouter   = require('./router/article');
+var boardRouter     = require('./router/board');
 var aboutRouter     = require('./router/about');
 var uploadRouter    = require('./router/upload');
+var articleRouter   = require('./router/article');
 
 /* Add Router */
 app.use('/login', loginRouter);
 app.use('/index', indexRouter);
 app.use('/', mainRouter);
 app.use('/timeline', timelineRouter);
-app.use('/article', articleRouter);
+app.use('/board', boardRouter);
 app.use('/about', aboutRouter);
 app.use('/upload', uploadRouter);
+app.use('/article', articleRouter);
 
 /* Page not Found (404) */
 app.use((req, res, next)=>{
