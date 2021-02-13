@@ -1,7 +1,7 @@
 #grid{
     /* grid */
     display: grid;
-    grid-template-columns: 170px 50px;
+    grid-template-columns: 180px 50px;
     /* center element horizontally and vertically */
     position: absolute;
     top: 50%;
