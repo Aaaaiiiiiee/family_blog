@@ -18,6 +18,7 @@
 * [Add login_log in login function and make personalized session](https://github.com/Aaaaiiiiiee/family_blog_practice/commit/3bfd6f1ff6d7957940b89c6713d1a14a47d8c903)
 * [Add Multiple upload function (1)](https://github.com/Aaaaiiiiiee/family_blog_practice/commit/2a95a1c6b77065d6e7760a295bf00223ee76138d)
 * [Add Multiple upload function: end](https://github.com/Aaaaiiiiiee/family_blog_practice/commit/72a9f0c994dc54b6636d4ff3c73b897a596ebc62)
+* [Update Multiploe upload function: reference with DATABASE](https://github.com/Aaaaiiiiiee/family_blog_practice/commit/d71aebe350ff18c45ab76b4af8a0b07504b4a044)
 
 # Reference
 * [Content-security-policy에 관하여](https://developers.google.com/web/fundamentals/security/csp?hl=ko)
