@@ -11,7 +11,8 @@ img{
 }
 
 #article{
-    font-family: 'Times New Roman', serif
+    font-family: 'Times New Roman', serif;
+    margin-bottom: 20px;
 }
 
 #article h2{
@@ -24,5 +25,19 @@ img{
     right: 0;
 }
 #article > p{
+    font-size: 2em;
+}
+
+.controller{
+    position: relative;
+}
+.controller form{
+    display: inline;
+}
+.controller #list{
+    position: absolute;
+    right: 0;
+}
+.controller input{
     font-size: 2em;
 }

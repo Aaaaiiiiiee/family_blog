@@ -49,9 +49,19 @@ router.get('/:article_number', (req, res) => {
                             <p>${article[0].last_update_date}</p>
                         </div>
 
-                        <!--<form action="/blog" method="GET">
-                            <input type="submit" value="list" name="list">
-                        </form>-->
+                        <div class="controller">
+                            <form method="GET" action="/upload/update">
+                                <input type="hidden" value="${req.params.article_number}" name="article_num">
+                                <input type="submit" value="update">
+                            </form>
+                            <form method="POST" action="/upload/delete">
+                                <input type="hidden" value="${req.params.article_number}" name="article_num">
+                                <input type="submit" value="delete">
+                            </form>
+                            <form method="GET" action="/board/" id="list">
+                                <input type="submit" value="list">
+                            </form>
+                        </div>
                     </div>
                     `);
                 res.send(html);
@@ -59,5 +69,7 @@ router.get('/:article_number', (req, res) => {
         });
     }
 });
+
+
 
 module.exports = router;

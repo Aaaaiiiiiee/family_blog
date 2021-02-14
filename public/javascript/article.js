@@ -1,19 +1,3 @@
-// $(document).ready(changeImage)
-
-// function changeImage() {
-//     var images = [], index = 1;
-//     var timer = setInterval(() => {
-//         var currentImage = images[index];
-//         index = (index == images.length - 1) ? 0 : ++index;
-//         $('.slider img').fadeOut(200, () => {
-//             $('.slider img').attr('src', '/public/album/' + currentImage);
-//             $('.slider img').fadeIn(200);
-//         });
-//     }, 5000);
-// }
-
-///////////////////////////////
-
 $(document).ready(init);
 $(window).resize(resizeImgWidth);
 
