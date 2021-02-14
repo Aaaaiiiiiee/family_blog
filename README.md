@@ -8,8 +8,7 @@
     * https://stackoverflow.com/questions/39350040/uploading-multiple-files-with-multer
     * Search `how can i use multer by multiple upload`
 - [x] Write Wiki about how to init&run this project
-- [ ] Run on gcp
-- [ ] why cannot connect in gcp_mysql in this shell
+- [x] Run on gcp
 - [ ] Make article Router ( This is about showing article )
 - [ ] what to do
 
@@ -23,4 +22,6 @@
 
 # Reference
 * [Content-security-policy에 관하여](https://developers.google.com/web/fundamentals/security/csp?hl=ko)
-https://www.digitalocean.com/community/tutorials/how-to-use-pm2-to-setup-a-node-js-production-environment-on-an-ubuntu-vps#give-safe-user-permission-to-use-port-80
+* [pm2로 80번 port에서 project 시작하는 방법](https://www.digitalocean.com/community/tutorials/how-to-use-pm2-to-setup-a-node-js-production-environment-on-an-ubuntu-vps#give-safe-user-permission-to-use-port-80)
+* [how to create https-server in Node.js (docs)](https://nodejs.org/en/knowledge/HTTP/servers/how-to-create-a-HTTPS-server/)
+* [how to create https-server in Node.js (stack-overflow)](https://stackoverflow.com/questions/11744975/enabling-https-on-express-js)

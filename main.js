@@ -1,11 +1,19 @@
-// You should change this value, before running on main app. (-> 30)
-const port = 3000;
+// You should change this value, before running on main app. (-> 80)
+const http_port = 8000;
+const https_port = 8443;
 /* Personal Libraries */
 var secret = require('./lib/secret.js');
 
 /* default module */
 const express = require('express');
 const app = express();
+const http = require('http');
+const https = require('https');
+const fs = require('fs');
+const options = {
+    key: fs.readFileSync('key.pem'),
+    cert: fs.readFileSync('cert.pem')
+}
 /* npm module */
 const helmet = require('helmet');
 var session = require('express-session');
@@ -48,6 +56,7 @@ app.use('/article', articleRouter);
 
 /* Page not Found (404) */
 app.use((req, res, next)=>{
+    console.log("There was a request to undefined router");
     res.status(404).send('Wrong Access!!(404)');
 });
 
@@ -57,6 +66,22 @@ app.use((err, req, res, next)=>{
     res.status(500).send('Something broke!');
 });
 
-app.listen(port, ()=>{
-    console.log(`App is running on ${port}`);
+/* automatic connect to https */
+app.use((req, res, next)=>{
+    if(req.secure){
+        // handle requested by https
+    } else{
+        // handle requested by http
+        console.log(req.header.host + req.url);
+        res.redirect('https://' + req.headers.host + req.url);
+    }
+});
+
+var httpServer = http.createServer(app);
+var httpsServer = https.createServer(options, app);
+httpServer.listen(http_port, ()=>{
+    console.log(`App is running on port ${http_port}`);
+});
+httpsServer.listen(https_port, ()=>{
+    console.log(`App is running on port ${https_port}`);
 });

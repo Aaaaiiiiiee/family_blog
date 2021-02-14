@@ -53,6 +53,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/article', upload, (req, res, next) => {
+    console.log(req.files);
     connection.query(`INSERT INTO article(title, description, created_date, last_update_date)
         VALUES (?, ?, NOW(), NOW());
     `, [req.body.title, req.body.article_body], (err, article_data)=>{

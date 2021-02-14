@@ -6,3 +6,5 @@ sessions/
 
 secret.js
 !secret.js.template
+
+*.pem
