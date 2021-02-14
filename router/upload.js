@@ -53,24 +53,21 @@ router.get('/', (req, res) => {
 });
 
 router.post('/article', upload, (req, res, next) => {
-    for (var i = 0; i < req.files.length; i++) {
-        var filename = req.files[i].filename;
-        connection.query(`INSERT INTO album_photo(filename) VALUES(?);`, [filename], (err, data) => {
-            if (err) throw err;
-        });
-        console.log("FILE IS ADDED IN TABLE album_photo");
-    }
+    connection.query(`INSERT INTO article(title, description, created_date, last_update_date)
+        VALUES (?, ?, NOW(), NOW());
+    `, [req.body.title, req.body.article_body], (err, article_data)=>{
+        if(err) throw err;
+        console.log('TABLE article IS NOW ADDED!!!');
 
-    connection.query(`SELECT COUNT(*) AS number FROM album_photo;`, (err, album_photo) => {
-        var album_photo_start_id = album_photo[0].number - req.files.length + 1;
-        connection.query(`
-            INSERT INTO article(title, description, album_photo_start_id, number_of_picture, created_date, last_update_date)
-            VALUES (?, ?, ?, ?, NOW(), NOW());
-        `, [req.body.title, req.body.article_body, album_photo_start_id, req.files.length], (err, data) => {
-            if (err) throw err;
-            console.log('TABLE article IS NOW ADDED');
-            res.redirect('/article/' + data.insertId);
-        });
+        for(var i=0; i<req.files.length; i++){
+            var filename = req.files[i].filename;
+            connection.query(`INSERT INTO album_photo(filename, article_id) VALUES(?, ?);`, [filename, article_data.insertId], (err, album_photo_data)=>{
+                if(err) throw err;
+                console.log('FILE IS ADDED IN TABLE album_photo');
+            });
+        }
+
+        res.redirect('/article/' + article_data.insertId);
     });
 });
 
