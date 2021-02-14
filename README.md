@@ -12,6 +12,7 @@
 - [x] Make article Router ( This is about showing article )
 - [ ] Make board Router (to see article list)
 - [ ] Make Update/Delete function in article
+- [ ] publish beta ver.
 - [ ] what to do
 
 # Commit LOG
