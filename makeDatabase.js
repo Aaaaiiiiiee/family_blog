@@ -28,11 +28,12 @@ con.connect(function (err) {
 
     /* CREATE TABLE article */
     con.query(`CREATE TABLE article(
-        number                      INT(11)     NOT NULL    AUTO_INCREMENT,
-        title                       VARCHAR(100) NOT NULL,
+        number                      INT(11)         NOT NULL    AUTO_INCREMENT,
+        title                       VARCHAR(100)    NOT NULL,
         description                 TEXT,
-        created_date                DATETIME    NOT NULL,
-        last_update_date            DATETIME    NOT NULL,
+        writer                      VARCHAR(20)     NOT NULL,
+        created_date                DATETIME        NOT NULL,
+        last_update_date            DATETIME        NOT NULL,
         PRIMARY KEY(number)
     );`, (err, res) => {
         if (err) throw err;

@@ -36,9 +36,7 @@ router.get('/', (req, res) => {
     else {
         var html = template.header(`
             <meta http-equiv="Content-Security-Policy" content="default-src 'none'; font-src https://fonts.gstatic.com; style-src 'self' https://fonts.googleapis.com; script-src-elem 'self'">
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Times+New+Roman">
             <link rel="stylesheet" type="text/css" href="/css/upload.css">
-            <script type="text/javascript" src="/javascript/jquery.min.js"></script>
             <script type="text/javascript" src="/javascript/upload.js"></script>
         `, `
             <form action="/upload/article" enctype="multipart/form-data" method="post">
@@ -53,10 +51,10 @@ router.get('/', (req, res) => {
 });
 
 router.post('/article', upload, (req, res, next) => {
-    console.log(req.files);
-    connection.query(`INSERT INTO article(title, description, created_date, last_update_date)
-        VALUES (?, ?, NOW(), NOW());
-    `, [req.body.title, req.body.article_body], (err, article_data)=>{
+    console.log(req.session.id);
+    connection.query(`INSERT INTO article(title, description, writer, created_date, last_update_date)
+        VALUES (?, ?, ?, NOW(), NOW());
+    `, [req.body.title, req.body.article_body, req.session.user_realName], (err, article_data)=>{
         if(err) throw err;
         console.log('TABLE article IS NOW ADDED!!!');
 

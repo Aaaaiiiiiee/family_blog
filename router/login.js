@@ -42,7 +42,7 @@ router.post('/in', (req, res) => {
 
             req.session.login_failed = false;
             req.session.is_logined = true;
-            req.session.id = user[0].id;
+            req.session.user_realName = user[0].real_name;
             req.session.logged = date.now;
             req.session.maxAge = 1*60*15;   // 15 minutes
 

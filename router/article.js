@@ -30,13 +30,14 @@ router.get('/:article_number', (req, res) => {
 
                 var html = template.header(`
                     <meta http-equiv="Content-Security-Policy" content="default-src 'none'; font-src https://fonts.gstatic.com; style-src 'self' https://fonts.googleapis.com; script-src-elem 'self'; img-src 'self'">
-                    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Times+New+Roman">
                     <link rel="stylesheet" type="text/css" href="/css/article.css">
-                    <script type="text/javascript" src="/javascript/jquery.min.js"></script>
                     <script type="text/javascript" src="/javascript/article.js"></script>
                     `, `
                     <div id="article">
-                        <h2>${article[0].title}</h2>
+                        <div id="article_grid">
+                            <h2>${article[0].title}</h2>
+                            <h3>${article[0].writer}</h3>
+                        </div>
                         <div class="slider">
                             ${img_html}
                         </div>

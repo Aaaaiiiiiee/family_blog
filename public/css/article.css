@@ -7,6 +7,7 @@ img{
 #article_grid{
     display: grid;
     grid-template-columns: 1fr 1fr;
+    position: relative;
 }
 
 #article{
@@ -15,6 +16,12 @@ img{
 
 #article h2{
     font-size: 3em;
+}
+#article h3{
+    font-size: 2em;
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }
 #article > p{
     font-size: 2em;

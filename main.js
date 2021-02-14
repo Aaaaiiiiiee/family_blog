@@ -72,7 +72,6 @@ app.use((req, res, next)=>{
         // handle requested by https
     } else{
         // handle requested by http
-        console.log(req.header.host + req.url);
         res.redirect('https://' + req.headers.host + req.url);
     }
 });

@@ -10,7 +10,7 @@
 - [x] Write Wiki about how to init&run this project
 - [x] Run on gcp
 - [x] Make article Router ( This is about showing article )
-- [ ] Make board Router (to see article list)
+- [x] Make board Router (to see article list)
 - [ ] Make Update/Delete function in article
 - [ ] publish beta ver.
 - [ ] what to do
