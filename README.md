@@ -9,7 +9,9 @@
     * Search `how can i use multer by multiple upload`
 - [x] Write Wiki about how to init&run this project
 - [x] Run on gcp
-- [ ] Make article Router ( This is about showing article )
+- [x] Make article Router ( This is about showing article )
+- [ ] Make board Router (to see article list)
+- [ ] Make Update/Delete function in article
 - [ ] what to do
 
 # Commit LOG
