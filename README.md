@@ -12,7 +12,8 @@
 - [x] Make article Router ( This is about showing article )
 - [x] Make board Router (to see article list)
 - [x] Make Update/Delete function in article
-- [ ] publish beta ver.
+- [x] publish beta ver.
+- [ ] [change image slide by javascript](https://www.google.com/search?q=how+to+make+image+slide+in+javascript&rlz=1C1SQJL_koKR875KR875&oq=how+to+make+image+slide+in+javascript&aqs=chrome..69i57.10863j0j1&sourceid=chrome&ie=UTF-8)
 - [ ] what to do
 
 # Commit LOG
