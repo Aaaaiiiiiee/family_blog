@@ -44,10 +44,10 @@ router.post('/in', (req, res) => {
             req.session.is_logined = true;
             req.session.user_realName = user[0].real_name;
             req.session.logged = date.now;
-            req.session.maxAge = 1*60*15;   // 15 minutes
+            req.session.maxAge = 1 * 60 * 15;   // 15 minutes
 
-            connection.query(`INSERT INTO login_log(id, login_time) VALUES(?, NOW());`, [user[0].id], (err, data)=>{
-                if(err) throw err;
+            connection.query(`INSERT INTO login_log(id, login_time) VALUES(?, NOW());`, [user[0].id], (err, data) => {
+                if (err) throw err;
                 console.log("INSERT login_log SUCCEED");
             });
 
@@ -62,11 +62,9 @@ router.post('/in', (req, res) => {
 });
 
 router.get('/out', (req, res) => {
-    req.session.login_failed = false;
-    req.session.is_logined = false;
-    req.session.id = "";
-
-    res.redirect('/');
+    req.session.destroy((err) => {
+        res.redirect('/');
+    });
 });
 
 module.exports = router;
