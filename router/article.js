@@ -79,35 +79,4 @@ router.get('/:article_number', (req, res) => {
     }
 });
 
-{/* <div id="article">
-                            <div id="article_grid">
-                                <h2>${article[0].title}</h2>
-                                <h3>${article[0].writer}</h3>
-                            </div>
-                            <div class="slider">
-                                ${img_html}
-                            </div>
-                            <p>
-                                ${article[0].description}
-                            </p>
-                            <div id="article_grid">
-                                <p>${article[0].created_date}</p>
-                                <p>${article[0].last_update_date}</p>
-                            </div>
-
-                            <div class="controller">
-                                <form method="GET" action="/upload/update">
-                                    <input type="hidden" value="${req.params.article_number}" name="article_num">
-                                    <input type="submit" value="update">
-                                </form>
-                                <form method="POST" action="/upload/delete">
-                                    <input type="hidden" value="${req.params.article_number}" name="article_num">
-                                    <input type="submit" value="delete">
-                                </form>
-                                <form method="GET" action="/board/" id="list">
-                                    <input type="submit" value="list">
-                                </form>
-                            </div>
-                        </div> */}
-
 module.exports = router;
