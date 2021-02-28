@@ -34,8 +34,8 @@ router.get('/:article_number', (req, res) => {
                     let title               = article[0].title,
                         writer              = article[0].writer,
                         desc                = article[0].description,
-                        created_date        = article[0].created_date,
-                        last_update_date    = article[0].last_update_date;
+                        created_date        = article[0].created_date.toLocaleString('ko-KR', { timeZone: 'UTC' }),
+                        last_update_date    = article[0].last_update_date.toLocaleString('ko-KR', { timeZone: 'UTC' });
 
                     var html = template.index(`
                             <link rel="stylesheet" href="/css/article.css">
@@ -44,12 +44,33 @@ router.get('/:article_number', (req, res) => {
                             <div id="article">
                                 <div class="container">
                                     <div class="row">
-                                        <div class="col-md-8 title">${title}</div>
-                                        <div class="col-6 col-md-4 writer">${writer}</div>
+                                        <div class="col title"><h2>${title}</h2></div>
+                                        <div class="col writer"><h4>${writer}</h4></div>
                                     </div>
                                 </div>
                                 ${img_html}
-                            </div>
+                                <p>${desc}</p>
+                                <div class="container date">
+                                    <div class="row">
+                                        <div class="col-4 date_name">만든 날짜</div>
+                                        <div class="col-8 date_value">${created_date}</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4 date_name">최근 수정</div>
+                                        <div class="col-8 date_value">${last_update_date}</div>
+                                    </div>
+                                </div>
+                                <div class="container controller">
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <a href="/upload/update" class="btn btn-outline-secondary">Update</a>
+                                            <a href="/upload/delete" class="btn btn-outline-secondary">Delete</a>
+                                        </div>
+                                        <div class="col-4 list_btn">
+                                            <a href="/board" class="btn btn-outline-secondary">List</a>
+                                        </div>
+                                    </div>
+                                </div>
                         `);
                     res.send(html);
                 }

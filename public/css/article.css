@@ -1,20 +1,31 @@
-.controller{
-    position: relative;
-}
-.controller form{
-    display: inline;
-}
-.controller #list{
-    position: absolute;
-    right: 0;
-}
-.controller input{
-    font-size: 2em;
+#article{
+    margin-top: 10px;
 }
 
 #article .title{
     text-align: left;
 }
 #article .writer{
+    text-align: right;
+}
+main p{
+    margin-top: 10px;
+    text-align: initial;
+}
+
+.date{
+    margin-bottom: 10px;
+    text-align: initial;
+}
+.date .date_name{
+    /* text-align: right; */
+}
+.date .date_value{
+    text-align: right;
+}
+.controller{
+    text-align: initial;
+}
+.controller .list_btn{
     text-align: right;
 }
