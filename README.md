@@ -15,7 +15,9 @@
 - [x] publish beta ver.
 - [ ] [change image slide by javascript](https://www.google.com/search?q=how+to+make+image+slide+in+javascript&rlz=1C1SQJL_koKR875KR875&oq=how+to+make+image+slide+in+javascript&aqs=chrome..69i57.10863j0j1&sourceid=chrome&ie=UTF-8)
     - [upload image by drag and drop reference](http://www.prowaretech.com/Computer/JavaScript/Nodejs/DragAndDropAjaxFileUpload)
-- [ ] Make UI in mobile(https://www.google.com/search?q=how+to+handle+router+according+to+device+in+nodejs+express&rlz=1C1SQJL_koKR869KR869&oq=how+to+handle+router+according+to+device+in+nodejs+express&aqs=chrome..69i57.9413j0j1&sourceid=chrome&ie=UTF-8)
+    - Made it by Bootstrap
+- [x] Make UI in mobile(https://www.google.com/search?q=how+to+handle+router+according+to+device+in+nodejs+express&rlz=1C1SQJL_koKR869KR869&oq=how+to+handle+router+according+to+device+in+nodejs+express&aqs=chrome..69i57.9413j0j1&sourceid=chrome&ie=UTF-8)
+    - made it by bootstrap(responsive web)
 - [ ] what to do
 
 # Commit LOG
