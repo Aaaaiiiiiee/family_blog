@@ -1,33 +1,3 @@
-/* img{
-    max-width: 1100px;
-    display: none;
-    margin: 0 auto;
-} */
-
-#article_grid{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    position: relative;
-}
-
-#article{
-    font-family: 'Times New Roman', serif;
-    margin-bottom: 20px;
-}
-
-#article h2{
-    font-size: 3em;
-}
-#article h3{
-    font-size: 2em;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-}
-#article > p{
-    font-size: 2em;
-}
-
 .controller{
     position: relative;
 }
@@ -40,4 +10,11 @@
 }
 .controller input{
     font-size: 2em;
+}
+
+#article .title{
+    text-align: left;
+}
+#article .writer{
+    text-align: right;
 }

@@ -1,34 +1,33 @@
-.form_control_file{
-    border: 1px solid black;
-    border-radius: 10px;
-    /* margin-bottom: 5px; */
-}
-
-.btn{
-    width: 100px;
-    height: 30px;
-}
-.submit-btn{
+.my_submit_btn{
     float: right;
-}
-
-form{
-    margin-bottom: 40px;
-}
-
-form > input, textarea{
-    margin-bottom: 10px;
-}
-
-.type{
-    font-size: 25px;
-    /* font-family: 'Times New Roman', serif */
-}
-.type, .form_control_file{
-    width: 100%;
 }
 
 #title{
     margin-bottom: 0;
     font-weight: bold;
+}
+
+input[type="file"]{
+    border-radius: 10px;
+    border: 1px solid rgb(118, 118, 118);
+}
+input[type="text"]{
+    background-color: inherit;
+    color: white;
+    border: 1px solid rgb(118, 118, 118);
+}
+input[type="text"]::placeholder{
+    color: white;
+}
+textarea{
+    background-color: inherit;
+    color: white;
+    height: 50vh;
+}
+textarea::placeholder{
+    color: white;
+}
+
+input[type="file"], input[type="text"], textarea{
+    width: 100%;
 }

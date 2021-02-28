@@ -36,15 +36,21 @@ router.get('/', (req, res) => {
     if (!req.session.is_logined) res.redirect('/login');
     else {
         var html = template.index(`
-            <meta http-equiv="Content-Security-Policy" content="default-src 'none'; font-src https://fonts.gstatic.com; style-src 'self' https://fonts.googleapis.com; script-src-elem 'self'">
+            <!--<meta http-equiv="Content-Security-Policy" content="default-src 'none'; font-src https://fonts.gstatic.com; style-src 'self' https://fonts.googleapis.com; script-src-elem 'self'">-->
             <link rel="stylesheet" type="text/css" href="/css/upload.css">
             <script type="text/javascript" src="/javascript/upload.js"></script>
         `, `
             <form action="/upload/article" enctype="multipart/form-data" method="post">
-                <input type="file" class="form_control_file" name="album_photos" multiple>
-                <input type="text" name="title" placeholder="title" class="type" id="title">
-                <textarea name="article_body" placeholder="description" class="type"></textarea>
-                <input type="submit" value="Upload" class="submit-btn btn">
+                <div class="input-group mb-3">
+                    <input type="file" name="album_photos" multiple >
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" name="title" placeholder="title" id="title">
+                </div>
+                <div class="input-group mb-3">
+                    <textarea name="article_body" placeholder="description"></textarea>
+                </div>
+                <input type="submit" value="Upload" class="btn btn-outline-secondary my_submit_btn">
             </form>
         `);
         res.send(html);
@@ -78,7 +84,7 @@ router.get('/update', (req, res)=>{
 
         connection.query(`SELECT * FROM article WHERE number=?;`, [query.article_num], (err, article_data)=>{
             var html = template.index(`
-                <meta http-equiv="Content-Security-Policy" content="default-src 'none'; font-src https://fonts.gstatic.com; style-src 'self' https://fonts.googleapis.com; script-src-elem 'self'">
+                <!--<meta http-equiv="Content-Security-Policy" content="default-src 'none'; font-src https://fonts.gstatic.com; style-src 'self' https://fonts.googleapis.com; script-src-elem 'self'">-->
                 <link rel="stylesheet" type="text/css" href="/css/upload.css">
                 <script type="text/javascript" src="/javascript/upload.js"></script>
             `, `

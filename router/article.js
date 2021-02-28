@@ -26,50 +26,67 @@ router.get('/:article_number', (req, res) => {
             connection.query(`SELECT * FROM album_photo WHERE article_id=? ORDER BY id ASC`, [req.params.article_number], (err, album_photos) => {
                 if (err) throw err;
 
-                var img_html = template.makeImgtagFromAlbumPhotos(album_photos);
+                if(album_photos.length === 0){
+                    console.log("There was a request to undefined router");
+                    res.status(404).send('Wrong Access!!(404)');
+                } else {
+                    var img_html            = template.makeImgtagFromAlbumPhotos(album_photos);
+                    let title               = article[0].title,
+                        writer              = article[0].writer,
+                        desc                = article[0].description,
+                        created_date        = article[0].created_date,
+                        last_update_date    = article[0].last_update_date;
 
-                var html = template.index(`
-                    <!--<meta http-equiv="Content-Security-Policy" content="default-src 'none'; font-src https://fonts.gstatic.com; style-src 'self' https://fonts.googleapis.com; script-src-elem 'self'; img-src 'self'">
-                    <link rel="stylesheet" type="text/css" href="/css/article.css">
-                    <script type="text/javascript" src="/javascript/article.js"></script>-->
-                    `, `
-                    <div id="article">
-                        <div id="article_grid">
-                            <h2>${article[0].title}</h2>
-                            <h3>${article[0].writer}</h3>
-                        </div>
-                        <div class="slider">
-                            ${img_html}
-                        </div>
-                        <p>
-                            ${article[0].description}
-                        </p>
-                        <div id="article_grid">
-                            <p>${article[0].created_date}</p>
-                            <p>${article[0].last_update_date}</p>
-                        </div>
-
-                        <div class="controller">
-                            <form method="GET" action="/upload/update">
-                                <input type="hidden" value="${req.params.article_number}" name="article_num">
-                                <input type="submit" value="update">
-                            </form>
-                            <form method="POST" action="/upload/delete">
-                                <input type="hidden" value="${req.params.article_number}" name="article_num">
-                                <input type="submit" value="delete">
-                            </form>
-                            <form method="GET" action="/board/" id="list">
-                                <input type="submit" value="list">
-                            </form>
-                        </div>
-                    </div>
-                    `);
-                res.send(html);
+                    var html = template.index(`
+                            <link rel="stylesheet" href="/css/article.css">
+                            <script src="/javascript/article.js" type="text/javascript"></script>
+                        `, `
+                            <div id="article">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-8 title">${title}</div>
+                                        <div class="col-6 col-md-4 writer">${writer}</div>
+                                    </div>
+                                </div>
+                                ${img_html}
+                            </div>
+                        `);
+                    res.send(html);
+                }
             });
         });
     }
 });
 
+{/* <div id="article">
+                            <div id="article_grid">
+                                <h2>${article[0].title}</h2>
+                                <h3>${article[0].writer}</h3>
+                            </div>
+                            <div class="slider">
+                                ${img_html}
+                            </div>
+                            <p>
+                                ${article[0].description}
+                            </p>
+                            <div id="article_grid">
+                                <p>${article[0].created_date}</p>
+                                <p>${article[0].last_update_date}</p>
+                            </div>
 
+                            <div class="controller">
+                                <form method="GET" action="/upload/update">
+                                    <input type="hidden" value="${req.params.article_number}" name="article_num">
+                                    <input type="submit" value="update">
+                                </form>
+                                <form method="POST" action="/upload/delete">
+                                    <input type="hidden" value="${req.params.article_number}" name="article_num">
+                                    <input type="submit" value="delete">
+                                </form>
+                                <form method="GET" action="/board/" id="list">
+                                    <input type="submit" value="list">
+                                </form>
+                            </div>
+                        </div> */}
 
 module.exports = router;
