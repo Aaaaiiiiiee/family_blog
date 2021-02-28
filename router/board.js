@@ -24,11 +24,9 @@ router.get('/:tableNum', (req, res) => {
                 if (err) throw err;
 
                 var table = template.makeTable(article_columns, article_data);
-                var html = template.header(`
+                var html = template.index(`
                 <link rel="stylesheet" type="text/css" href="/css/board.css">
-            `, `
-                ${table}
-            `);
+            `, table);
                 res.send(html);
             });
         });

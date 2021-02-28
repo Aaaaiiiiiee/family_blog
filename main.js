@@ -28,7 +28,7 @@ app.use(session({
     secret: secret.session.secret,
     resave: false,
     saveUninitialized: true,
-    store: new FileStore(),
+    store: new FileStore({logFn: function(){}}),
 }));
 app.use(bodyParser.urlencoded({
     extended: false
@@ -43,6 +43,7 @@ var boardRouter     = require('./router/board');
 var aboutRouter     = require('./router/about');
 var uploadRouter    = require('./router/upload');
 var articleRouter   = require('./router/article');
+var testRouter      = require('./router/test');
 
 /* Add Router */
 app.use('/login', loginRouter);
@@ -53,6 +54,7 @@ app.use('/board', boardRouter);
 app.use('/about', aboutRouter);
 app.use('/upload', uploadRouter);
 app.use('/article', articleRouter);
+app.use('/test', testRouter);
 
 /* Page not Found (404) */
 app.use((req, res, next)=>{

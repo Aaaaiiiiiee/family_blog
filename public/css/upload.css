@@ -22,7 +22,7 @@ form > input, textarea{
 
 .type{
     font-size: 25px;
-    font-family: 'Times New Roman', serif
+    /* font-family: 'Times New Roman', serif */
 }
 .type, .form_control_file{
     width: 100%;

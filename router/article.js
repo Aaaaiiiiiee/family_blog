@@ -28,10 +28,10 @@ router.get('/:article_number', (req, res) => {
 
                 var img_html = template.makeImgtagFromAlbumPhotos(album_photos);
 
-                var html = template.header(`
-                    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; font-src https://fonts.gstatic.com; style-src 'self' https://fonts.googleapis.com; script-src-elem 'self'; img-src 'self'">
+                var html = template.index(`
+                    <!--<meta http-equiv="Content-Security-Policy" content="default-src 'none'; font-src https://fonts.gstatic.com; style-src 'self' https://fonts.googleapis.com; script-src-elem 'self'; img-src 'self'">
                     <link rel="stylesheet" type="text/css" href="/css/article.css">
-                    <script type="text/javascript" src="/javascript/article.js"></script>
+                    <script type="text/javascript" src="/javascript/article.js"></script>-->
                     `, `
                     <div id="article">
                         <div id="article_grid">

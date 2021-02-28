@@ -35,7 +35,7 @@ var upload = multer({ // `upload` multer settings
 router.get('/', (req, res) => {
     if (!req.session.is_logined) res.redirect('/login');
     else {
-        var html = template.header(`
+        var html = template.index(`
             <meta http-equiv="Content-Security-Policy" content="default-src 'none'; font-src https://fonts.gstatic.com; style-src 'self' https://fonts.googleapis.com; script-src-elem 'self'">
             <link rel="stylesheet" type="text/css" href="/css/upload.css">
             <script type="text/javascript" src="/javascript/upload.js"></script>
@@ -77,7 +77,7 @@ router.get('/update', (req, res)=>{
         var query = url_parts.query;
 
         connection.query(`SELECT * FROM article WHERE number=?;`, [query.article_num], (err, article_data)=>{
-            var html = template.header(`
+            var html = template.index(`
                 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; font-src https://fonts.gstatic.com; style-src 'self' https://fonts.googleapis.com; script-src-elem 'self'">
                 <link rel="stylesheet" type="text/css" href="/css/upload.css">
                 <script type="text/javascript" src="/javascript/upload.js"></script>

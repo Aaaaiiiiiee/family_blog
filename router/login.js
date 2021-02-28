@@ -9,23 +9,34 @@ var router = express.Router();
 
 router.get('/', (req, res) => {
     var head = `
-        <link rel="stylesheet" type="text/css" href="/css/login.css">
+        <link href="/css/login.css" rel="stylesheet" type="text/css">
         `;
     var body = `
-        <form id="grid" action="/login/in" method="POST">
-            <div>
-                <input type="text" placeholder="id" name="id">
-                <input type="password" placeholder="pw" name="password">
-            </div>
-            <input id="login_button" type="submit" value="login">
-        </form>
+        <body class="text-center">
+            <main class="form-signin">
+            <form action="/login/in" method="POST">
+                <img class="mb-4" src="/images/logo.png" alt="" width="72" height="57">
+
+                <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+                <label for="inputId" class="visually-hidden">id</label>
+                <input type="id" id="inputId" class="form-control" placeholder="Your ID" required="" autofocus="" name="id">
+                <label for="inputPassword" class="visually-hidden">Password</label>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Your Password" required="" name="password">
+
+                <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+
+                <p class="mt-5 mb-3 text-muted">© 2021</p>
+            </form>
+            </main>
+        </body>
     `;
 
     if (req.session.login_failed) {
         head += `<script src="/javascript/login.js"></script>`;
     }
 
-    var html = template.HTML(head, body);
+    var html = template.basic(head, body);
     res.send(html);
 });
 
@@ -36,14 +47,19 @@ router.post('/in', (req, res) => {
     connection.query(`SELECT * FROM user WHERE id=?`, [id], (err, user) => {
         if (err) throw err;
 
-        if (pw == user[0].password) {
+        if(user.length === 0){
+            /* Login Failed */
+            console.log('login failed because of wrong id');
+            req.session.login_failed = true;
+            res.redirect('/login');
+        } else if (pw == user[0].password) {
             /* Login Success */
             console.log('login succeed');
 
             req.session.login_failed = false;
             req.session.is_logined = true;
             req.session.user_realName = user[0].real_name;
-            req.session.logged = date.now;
+            req.session.logged = date.now();
             req.session.maxAge = 1 * 60 * 15;   // 15 minutes
 
             connection.query(`INSERT INTO login_log(id, login_time) VALUES(?, NOW());`, [user[0].id], (err, data) => {

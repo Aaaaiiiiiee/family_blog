@@ -7,8 +7,7 @@ var router = express.Router();
 router.get('/', (req, res)=>{
     if(!req.session.is_logined) res.redirect('/login');
     else{
-        var html = template.header('', '');
-        html += 'this is timeline';
+        var html = template.index('', 'this is timeline');
         res.send(html);
     }
 });

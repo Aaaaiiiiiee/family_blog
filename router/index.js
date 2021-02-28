@@ -7,7 +7,7 @@ var router = express.Router();
 router.get('/', (req, res)=>{
     if(req.session.is_logined === false) res.redirect('/login');
     else {
-        var html = template.header('', '');
+        var html = template.index('', 'this is home');
         res.send(html);
     }
 });
