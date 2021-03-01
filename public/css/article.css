@@ -29,3 +29,6 @@ main p{
 .controller .list_btn{
     text-align: right;
 }
+.controller form{
+    display: inline;
+}

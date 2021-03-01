@@ -64,7 +64,9 @@ router.get('/:article_number', (req, res) => {
                                     <div class="row">
                                         <div class="col-8">
                                             <a href="/upload/update" class="btn btn-outline-secondary">Update</a>
-                                            <a href="/upload/delete" class="btn btn-outline-secondary">Delete</a>
+                                            <form action="/upload/delete" method="POST">
+                                                <button type="submit" class="btn btn-outline-secondary">Delete</button>
+                                            </form>
                                         </div>
                                         <div class="col-4 list_btn">
                                             <a href="/board" class="btn btn-outline-secondary">List</a>
