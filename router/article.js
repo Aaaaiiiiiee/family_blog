@@ -63,8 +63,12 @@ router.get('/:article_number', (req, res) => {
                                 <div class="container controller">
                                     <div class="row">
                                         <div class="col-8">
-                                            <a href="/upload/update" class="btn btn-outline-secondary">Update</a>
+                                            <form action="/upload/update" method="GET">
+                                                <input type="hidden" value="${req.params.article_number}" name="article_num">
+                                                <button type="submit" class="btn btn-outline-secondary">Update</button>
+                                            </form>
                                             <form action="/upload/delete" method="POST">
+                                                <input type="hidden" value="${req.params.article_number}" name="article_num">
                                                 <button type="submit" class="btn btn-outline-secondary">Delete</button>
                                             </form>
                                         </div>
