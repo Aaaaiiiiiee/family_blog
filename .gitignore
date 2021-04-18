@@ -1,10 +1,6 @@
-public/album/
-
 node_modules/
-nodejs/
 sessions/
 
 secret.js
 !secret.js.template
 
-*.pem
